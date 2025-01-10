@@ -1,0 +1,31 @@
+services: 
+  synchronizator:
+    restart: unless-stopped
+    build:
+      context: .
+      dockerfile: Synchronizator/Dockerfile
+    ports:
+      - "10001:8080"
+  database:
+    image: postgres:16.2
+    restart: unless-stopped
+    environment:
+      POSTGRES_PASSWORD: "Heslo1234."
+      POSTGRES_USER: "synchronizer"
+      POSTGRES_DB: "SynchronizerDb"
+    ports:
+      - "10000:5432"
+    volumes:
+      - "db:/var/lib/postgresql/data"
+  api:
+    restart: unless-stopped
+    build:
+      context: .
+      dockerfile: Synchronizator.Api/Dockerfile
+    ports:
+      - "10002:8080"
+    volumes:
+      - ./local-storage/synchronized:/app/synchronized
+volumes:
+  db:
+    driver: local
