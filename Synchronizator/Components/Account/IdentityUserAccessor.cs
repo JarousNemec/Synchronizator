@@ -1,5 +1,5 @@
 using Microsoft.AspNetCore.Identity;
-using Synchronizator.Data;
+using Synchronizator.Database.Tables;
 
 namespace Synchronizator.Components.Account;
 

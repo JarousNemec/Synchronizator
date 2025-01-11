@@ -1,0 +1,16 @@
+C:\Projekty\Skola\PRG\Synchronizator\Synchronizator.Lib\bin\Debug\net8.0\Synchronizator.Lib.deps.json
+C:\Projekty\Skola\PRG\Synchronizator\Synchronizator.Lib\bin\Debug\net8.0\Synchronizator.Lib.dll
+C:\Projekty\Skola\PRG\Synchronizator\Synchronizator.Lib\bin\Debug\net8.0\Synchronizator.Lib.pdb
+C:\Projekty\Skola\PRG\Synchronizator\Synchronizator.Lib\bin\Debug\net8.0\Synchronizator.Database.dll
+C:\Projekty\Skola\PRG\Synchronizator\Synchronizator.Lib\bin\Debug\net8.0\Synchronizator.Database.pdb
+C:\Projekty\Skola\PRG\Synchronizator\Synchronizator.Lib\obj\Debug\net8.0\Synchronizator.Lib.csproj.AssemblyReference.cache
+C:\Projekty\Skola\PRG\Synchronizator\Synchronizator.Lib\obj\Debug\net8.0\Synchronizator.Lib.GeneratedMSBuildEditorConfig.editorconfig
+C:\Projekty\Skola\PRG\Synchronizator\Synchronizator.Lib\obj\Debug\net8.0\Synchronizator.Lib.AssemblyInfoInputs.cache
+C:\Projekty\Skola\PRG\Synchronizator\Synchronizator.Lib\obj\Debug\net8.0\Synchronizator.Lib.AssemblyInfo.cs
+C:\Projekty\Skola\PRG\Synchronizator\Synchronizator.Lib\obj\Debug\net8.0\Synchronizator.Lib.csproj.CoreCompileInputs.cache
+C:\Projekty\Skola\PRG\Synchronizator\Synchronizator.Lib\obj\Debug\net8.0\Synchronizator.Lib.sourcelink.json
+C:\Projekty\Skola\PRG\Synchronizator\Synchronizator.Lib\obj\Debug\net8.0\Synchron.DBB70E07.Up2Date
+C:\Projekty\Skola\PRG\Synchronizator\Synchronizator.Lib\obj\Debug\net8.0\Synchronizator.Lib.dll
+C:\Projekty\Skola\PRG\Synchronizator\Synchronizator.Lib\obj\Debug\net8.0\refint\Synchronizator.Lib.dll
+C:\Projekty\Skola\PRG\Synchronizator\Synchronizator.Lib\obj\Debug\net8.0\Synchronizator.Lib.pdb
+C:\Projekty\Skola\PRG\Synchronizator\Synchronizator.Lib\obj\Debug\net8.0\ref\Synchronizator.Lib.dll

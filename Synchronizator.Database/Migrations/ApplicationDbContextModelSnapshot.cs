@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
-using Synchronizator.Data;
+using Synchronizator.Database;
 
 #nullable disable
 
@@ -158,7 +158,7 @@ namespace Synchronizator.Database.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
-            modelBuilder.Entity("Synchronizator.Data.ApplicationUser", b =>
+            modelBuilder.Entity("Synchronizator.Database.Tables.ApplicationUser", b =>
                 {
                     b.Property<string>("Id")
                         .HasColumnType("text");
@@ -222,7 +222,7 @@ namespace Synchronizator.Database.Migrations
                     b.ToTable("AspNetUsers", (string)null);
                 });
 
-            modelBuilder.Entity("Synchronizator.Data.ApplicationUserHasFile", b =>
+            modelBuilder.Entity("Synchronizator.Database.Tables.ApplicationUserHasFile", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -231,6 +231,9 @@ namespace Synchronizator.Database.Migrations
                     b.Property<string>("DiskPath")
                         .IsRequired()
                         .HasColumnType("text");
+
+                    b.Property<DateTimeOffset>("LastUpdated")
+                        .HasColumnType("timestamp with time zone");
 
                     b.Property<string>("Token")
                         .IsRequired()
@@ -247,7 +250,7 @@ namespace Synchronizator.Database.Migrations
                     b.ToTable("Files");
                 });
 
-            modelBuilder.Entity("Synchronizator.Data.ApplicationUserHasToken", b =>
+            modelBuilder.Entity("Synchronizator.Database.Tables.ApplicationUserHasToken", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -279,7 +282,7 @@ namespace Synchronizator.Database.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
                 {
-                    b.HasOne("Synchronizator.Data.ApplicationUser", null)
+                    b.HasOne("Synchronizator.Database.Tables.ApplicationUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -288,7 +291,7 @@ namespace Synchronizator.Database.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
                 {
-                    b.HasOne("Synchronizator.Data.ApplicationUser", null)
+                    b.HasOne("Synchronizator.Database.Tables.ApplicationUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -303,7 +306,7 @@ namespace Synchronizator.Database.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Synchronizator.Data.ApplicationUser", null)
+                    b.HasOne("Synchronizator.Database.Tables.ApplicationUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -312,16 +315,16 @@ namespace Synchronizator.Database.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
                 {
-                    b.HasOne("Synchronizator.Data.ApplicationUser", null)
+                    b.HasOne("Synchronizator.Database.Tables.ApplicationUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("Synchronizator.Data.ApplicationUserHasFile", b =>
+            modelBuilder.Entity("Synchronizator.Database.Tables.ApplicationUserHasFile", b =>
                 {
-                    b.HasOne("Synchronizator.Data.ApplicationUser", "User")
+                    b.HasOne("Synchronizator.Database.Tables.ApplicationUser", "User")
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -330,9 +333,9 @@ namespace Synchronizator.Database.Migrations
                     b.Navigation("User");
                 });
 
-            modelBuilder.Entity("Synchronizator.Data.ApplicationUserHasToken", b =>
+            modelBuilder.Entity("Synchronizator.Database.Tables.ApplicationUserHasToken", b =>
                 {
-                    b.HasOne("Synchronizator.Data.ApplicationUser", "User")
+                    b.HasOne("Synchronizator.Database.Tables.ApplicationUser", "User")
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)

@@ -1,4 +1,4 @@
-﻿namespace Synchronizator.Data;
+﻿namespace Synchronizator.Database.Tables;
 
 public class ApplicationUserHasToken
 {

@@ -24,6 +24,7 @@
 
     <ItemGroup>
       <ProjectReference Include="..\Synchronizator.Database\Synchronizator.Database.csproj" />
+      <ProjectReference Include="..\Synchronizator.Lib\Synchronizator.Lib.csproj" />
     </ItemGroup>
 
 </Project>

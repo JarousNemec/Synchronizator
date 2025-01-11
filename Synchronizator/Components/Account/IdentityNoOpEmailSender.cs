@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI.Services;
-using Synchronizator.Data;
+using Synchronizator.Database.Tables;
 
 namespace Synchronizator.Components.Account;
 

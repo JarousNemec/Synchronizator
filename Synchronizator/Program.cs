@@ -3,7 +3,9 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Synchronizator.Components;
 using Synchronizator.Components.Account;
-using Synchronizator.Data;
+using Synchronizator.Database;
+using Synchronizator.Database.Tables;
+using Synchronizator.Lib.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -35,6 +37,8 @@ builder.Services.AddIdentityCore<ApplicationUser>(options => options.SignIn.Requ
     .AddDefaultTokenProviders();
 
 builder.Services.AddSingleton<IEmailSender<ApplicationUser>, IdentityNoOpEmailSender>();
+builder.Services.AddScoped<DatabaseService>();
+builder.Services.AddScoped<HttpContextAccessor>();
 
 var app = builder.Build();
 

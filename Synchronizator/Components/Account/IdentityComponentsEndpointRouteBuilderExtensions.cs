@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Primitives;
 using Synchronizator.Components.Account.Pages;
 using Synchronizator.Components.Account.Pages.Manage;
-using Synchronizator.Data;
+using Synchronizator.Database.Tables;
 
 namespace Microsoft.AspNetCore.Routing;
 

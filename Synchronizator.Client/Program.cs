@@ -1,3 +1,3 @@
-﻿// See https://aka.ms/new-console-template for more information
+﻿using Synchronizator.Client;
 
-Console.WriteLine("Hello, World!");
+new App().Run();

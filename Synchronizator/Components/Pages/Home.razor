@@ -1,11 +1,99 @@
 ﻿@page "/"
 @using Microsoft.AspNetCore.Authorization
-
-<PageTitle>Home</PageTitle>
+@using Microsoft.AspNetCore.Identity
+@using Synchronizator.Database.Tables
+@using Synchronizator.Lib.Models
+@using Synchronizator.Lib.Services
+@inject DatabaseService DatabaseService
+@inject UserManager<ApplicationUser> UserManager
+@inject HttpContextAccessor Accessor
+@rendermode InteractiveServer
 @attribute [Authorize]
 
-<h1>You are authenticated</h1>
-
+<PageTitle>Tokenizer</PageTitle>
 <AuthorizeView>
-    Hello @context.User.Identity?.Name!
+    <h1>Zdravím tě poutníku s uživatelským jménem @context.User.Identity?.Name!</h1>
+    <div>
+        <br/>
+        <h3>Vaše aktuální přístupové tokeny podle kterých můžete synchronizovat:</h3>
+        <br/>
+        <div>
+            <a class="btn-info btn" @onclick="AddNewToken">Přidat nový token</a>
+        </div>
+        <br/>
+        <table>
+            <tr>
+                <th>Token</th>
+                <th>Akce</th>
+            </tr>
+            @foreach (var token in _tokens)
+            {
+                <tr>
+                    <td>@token.Token</td>
+                    <td>
+                        <a class="btn-danger btn" @onclick="() => RemoveToken(token.Id)">X</a>
+                    </td>
+                </tr>
+            }
+        </table>
+        <br/>
+        <h3>Vaše synchronizované soubory:</h3>
+        <br/>
+        <table>
+            <tr>
+                <th>Cesta v systému</th>
+                <th>Token synchronizace</th>
+                <th>Naposledy aktualizovano</th>
+            </tr>
+            @foreach (var file in _files)
+            {
+            <tr>
+                <td>@file.DiskPath</td>
+                <td>@file.Token</td>
+                <td>@file.LastUpdated</td>
+            </tr>
+            }
+        </table>
+    </div>
+
 </AuthorizeView>
+
+@code
+{
+    private List<ApplicationUserHasToken> _tokens = new List<ApplicationUserHasToken>();
+    private List<ApplicationUserHasFile> _files = new List<ApplicationUserHasFile>();
+    private string? _userId = string.Empty;
+
+    protected override void OnAfterRender(bool firstRender)
+    {
+        if (firstRender)
+        {
+            _userId = UserManager.GetUserId(Accessor.HttpContext.User);
+            Update();
+        }
+    }
+
+    private void Update()
+    {
+        _tokens = DatabaseService.GetUserTokens(_userId);
+        _files = DatabaseService.GetUserFiles(_userId);
+        StateHasChanged();
+    }
+
+    private void AddNewToken()
+    {
+        var dto = new UserHasTokenDto()
+        {
+            UserId = _userId,
+            Token = Guid.NewGuid().ToString()
+        };
+        _ = DatabaseService.AddTokenToUser(dto);
+        Update();
+    }
+
+    private void RemoveToken(Guid tokenId)
+    {
+        _ = DatabaseService.RemoveTokenFromUser(tokenId);
+        Update();
+    }
+}
